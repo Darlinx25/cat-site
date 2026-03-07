@@ -28,6 +28,8 @@ ini_set('display_errors', 1);
             style="max-width: 300px; border-radius: 10px;">
     </div>
 
+
+    
 <div class="card">
     <strong>
          <a href="dashboard.php">Info de mi PC</a>
