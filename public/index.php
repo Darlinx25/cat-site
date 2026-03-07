@@ -23,6 +23,10 @@ ini_set('display_errors', 1);
 
 ?>
 
+    <div>
+        <img src="images/catgif.webp" alt="A very cute kitty"
+            style="max-width: 300px; border-radius: 10px;">
+    </div>
 
 <div class="card">
     <strong>
