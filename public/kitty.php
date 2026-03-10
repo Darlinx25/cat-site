@@ -2,6 +2,7 @@
 error_reporting(E_ALL);
 ini_set('display_errors', 2);
 require '../db/db.php';
+require '../includes/comments.php';
 $result = $db->query("SELECT id, img FROM cats WHERE id IN (1,2,3)");
 
 $cats = [];
@@ -9,6 +10,17 @@ $cats = [];
 while ($row = $result->fetchArray()) {
     $cats[$row['id']] = $row;
 }
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && !empty($_POST['msg'])) {
+    $msg = trim($_POST['msg']);
+    $cat_id = intval($_POST['cat_id'] ?? 0);
+    if ($cat_id > 0 && !empty($msg)) {
+        saveComment($db, $cat_id, $msg);
+    }
+
+}
+
+
 
 ?>
 
@@ -28,24 +40,31 @@ while ($row = $result->fetchArray()) {
     <div class="card">
         <h1>Here is the Kitty!</h1>
 
+        <div class="derecha">
+            <div>
+                <img src="<?php echo $cats[1]['img']; ?>" alt="A very cute kitty"
+                    style="max-width: 300px; border-radius: 10px;">
+            </div>
+            <ul class="comments" id="comments-1">
+                <?php showComments($db, 1); ?>
+        </div>
+        </ul>
 
-        <div>
-            <img src="<?php echo $cats[1]['img']; ?>" alt="A very cute kitty"
-                style="max-width: 300px; border-radius: 10px;">
-        </div>
-        <label for="coment">
-                Complain
-            </label>
-        <div>
-            <textarea id="comment" rows="4" cols="40" spellcheck=false> </textarea>
-        </div>
-        <div>
-            <strong>
-                <button id="comment-btn">Comment</button>
-                <h2 id ="respuesta" class="hide">gracias pero da igual xq no se guardar comentarios</h2>
-            </strong>
-        </div>
+        <label for="comment">
+            Complain
+        </label>
+        <form method="POST" id="comment-form">
+            <input type="hidden" name="cat_id" value="1">
+            <div>
+                <textarea name="msg" id="comment" rows="4" cols="40" spellcheck="false"></textarea>
+            </div>
 
+            <div>
+                <strong>
+                    <button type="submit" id="comment-btn">Comment</button>
+                </strong>
+            </div>
+        </form>
     </div>
 
     <div class="hide card" id="second-kitty">
@@ -76,33 +95,7 @@ while ($row = $result->fetchArray()) {
         <button id="more-btn">More?</button>
     </div>
 
-    <script>
-        document.getElementById('more-btn').onclick = function () {
-            document.getElementById('second-kitty').classList.toggle('hide');
-            document.getElementById('more').classList.toggle('hide');
-
-        };
-
-        document.getElementById('less-btn').onclick = function () {
-            document.getElementById('second-kitty').classList.toggle('hide');
-            document.getElementById('third-kitty').classList.toggle('hide');
-            document.getElementById('more').classList.toggle('hide');
-            document.getElementById('even_more-btn').classList.toggle('hide');
-        };
-
-        document.getElementById('even_more-btn').onclick = function () {
-            document.getElementById('third-kitty').classList.toggle('hide');
-            document.getElementById('even_more-btn').classList.toggle('hide');
-
-        };
-
-        document.getElementById('comment-btn').onclick = function () {
-            document.getElementById('respuesta').classList.toggle('hide');
-
-        };
-
-
-    </script>
+    <script src="/js/functions.js"></script>
 
 
 

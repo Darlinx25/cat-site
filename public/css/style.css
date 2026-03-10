@@ -40,6 +40,19 @@ textarea {
 
 }
 
+.derecha {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+}
+
+.comments {
+    border: 1px solid #3f4ef0;
+    padding: 20px;
+    max-height: 200px;
+    overflow-y: auto;
+}
+
 body { font-family: 'Courier New', monospace; background: #1a1a1a; color: #00ff00; padding: 20px; }
 
 .card { border: 1px solid #00ff00; padding: 15px; margin-bottom: 10px; border-radius: 5px; }

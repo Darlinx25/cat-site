@@ -5,8 +5,7 @@ $db = new SQLite3('database.db');
 
 $db->exec("CREATE TABLE IF NOT EXISTS cats (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
-    img TEXT,
-    comentario TEXT
+    img TEXT
 )");
 
 $db->exec("CREATE TABLE IF NOT EXISTS comments (
@@ -16,8 +15,5 @@ $db->exec("CREATE TABLE IF NOT EXISTS comments (
 )");
 
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && !empty($_POST['msg'])){
 
-
-}
 ?>
