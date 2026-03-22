@@ -1,20 +1,20 @@
 document.getElementById('more-btn').onclick = function () {
-    document.getElementById('second-kitty').classList.toggle('hide');
-    document.getElementById('more').classList.toggle('hide');
-
+    document.getElementById('second-kitty').classList.remove('hide');
+    document.getElementById('third-kitty').classList.add('hide');
+    document.getElementById('more').classList.add('hide');
+    document.getElementById('even_more-btn').classList.remove('hide');
 };
 
 document.getElementById('less-btn').onclick = function () {
-    document.getElementById('second-kitty').classList.toggle('hide');
-    document.getElementById('third-kitty').classList.toggle('hide');
-    document.getElementById('more').classList.toggle('hide');
-    document.getElementById('even_more-btn').classList.toggle('hide');
+    document.getElementById('second-kitty').classList.add('hide');
+    document.getElementById('third-kitty').classList.add('hide');
+    document.getElementById('more').classList.remove('hide');
+    document.getElementById('even_more-btn').classList.add('hide');
 };
 
 document.getElementById('even_more-btn').onclick = function () {
-    document.getElementById('third-kitty').classList.toggle('hide');
-    document.getElementById('even_more-btn').classList.toggle('hide');
-
+    document.getElementById('third-kitty').classList.remove('hide');
+    document.getElementById('even_more-btn').classList.add('hide');
 };
 
 document.getElementById('comment-btn').onclick = function () {

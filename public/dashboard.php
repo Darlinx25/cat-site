@@ -74,6 +74,11 @@ $percent = ($used_mem / $total_mem) * 100;
         
     </div>
 
+    <div>
+        <img src="images/download.gif"
+            style="max-width: 300px; border-radius: 10px;">
+    </div>
+
 </body>
 </html>  
 

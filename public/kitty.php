@@ -20,8 +20,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && !empty($_POST['msg'])) {
 
 }
 
-
-
 ?>
 
 <!DOCTYPE html>
@@ -48,6 +46,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && !empty($_POST['msg'])) {
             <ul class="comments" id="comments-1">
                 <?php showComments($db, 1); ?>
         </div>
+
+
+
+
         </ul>
 
         <label for="comment">
@@ -74,7 +76,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && !empty($_POST['msg'])) {
 
         </div>
         <div class="hide" id="third-kitty">
-            <img src="<?php echo $cats[3]['img']; ?>" alt="Another kitty"
+         
+        
+        
+        <img src="<?php echo $cats[3]['img']; ?>" alt="Another kitty"
                 style="max-width: 300px; border-radius: 10px;">
         </div>
         <div>
@@ -96,9 +101,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && !empty($_POST['msg'])) {
     </div>
 
     <script src="/js/functions.js"></script>
-
-
-
 
 </body>
 
