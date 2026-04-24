@@ -19,6 +19,9 @@ $gpu_info = shell_exec("lspci | grep -i 'vga\|3d' | cut -d: -f3");
 $CPU = trim($cpu_info);
 $GPU = trim($gpu_info);
 
+// Get Linux distro
+$distro = shell_exec("cat /etc/os-release | grep 'PRETTY_NAME' | cut -d'\"' -f2");
+
 // We split the memory string to get the 'Used' and 'Total' numbers
 $lines = explode("\n", trim($memory_raw));
 $mem_stats = preg_split('/\s+/', $lines[1]); 
@@ -55,6 +58,12 @@ $percent = ($used_mem / $total_mem) * 100;
     <div class="card">
         <strong>CPU: </strong> <?php echo $CPU; ?>
     </div>
+
+    <div class="card">
+        <strong>Distro: </strong> <?php echo trim($distro); ?>
+    </div>
+
+ 
 
     <div class="card">
         <strong>GPU:</strong> <?php echo $GPU; ?>
